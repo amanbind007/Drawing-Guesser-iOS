@@ -18,17 +18,20 @@ struct ContentView: View {
     @State private var lines = [Line]()
 
     var canvas: some View {
-        Canvas { context, _ in
+        return Canvas { context, _ in
 
             for line in lines {
                 var path = Path()
                 path.addLines(line.points)
                 context.stroke(path, with: .color(line.color), lineWidth: line.width)
+                
+                context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
             }
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
             .onChanged { value in
                 let newPoint = value.location
+                
                 currentLine.points.append(newPoint)
                 self.lines.append(currentLine)
             }
@@ -41,20 +44,43 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            canvas
-        }
-
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
-
-        .overlay {
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(lineWidth: 3)
-                .padding(3)
-        }
-        Button("Save to image: Canvas") {
-            if let view = canvas as? Canvas<EmptyView> {
-                let image = view.frame(width: 400, height: 400).snapshot()
-                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            Text("Lorem, Ipsum, Dolor et, Dinam")
+            
+            if lines.isEmpty {
+                Text("Waiting for Drawing....")
+            }
+            else {
+                Text("🤔 Guessing")
+            }
+            
+            VStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(lineWidth: 3)
+                    .frame(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)
+                    .background {
+                        canvas
+                            .padding()
+                            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+                    }
+            }
+            .padding(5)
+            
+            HStack {
+                Spacer()
+                Button("Save to image: Canvas") {
+                    let renderer = ImageRenderer(content: canvas)
+                    if let image = renderer.uiImage {
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    }
+                }
+                
+                Spacer()
+                
+                Button("Clear Canvas") {
+                    lines = [Line]()
+                }
+                
+                Spacer()
             }
         }
     }
