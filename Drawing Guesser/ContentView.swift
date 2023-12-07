@@ -24,14 +24,14 @@ struct ContentView: View {
                 var path = Path()
                 path.addLines(line.points)
                 context.stroke(path, with: .color(line.color), lineWidth: line.width)
-                
+
                 context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
             }
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
             .onChanged { value in
                 let newPoint = value.location
-                
+
                 currentLine.points.append(newPoint)
                 self.lines.append(currentLine)
             }
@@ -45,14 +45,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Lorem, Ipsum, Dolor et, Dinam")
-            
+
             if lines.isEmpty {
                 Text("Waiting for Drawing....")
             }
             else {
                 Text("🤔 Guessing")
             }
-            
+
             VStack {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(lineWidth: 3)
@@ -64,22 +64,31 @@ struct ContentView: View {
                     }
             }
             .padding(5)
-            
+
             HStack {
                 Spacer()
                 Button("Save to image: Canvas") {
-                    let renderer = ImageRenderer(content: canvas)
+                    let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
+                        for line in lines {
+                            var path = Path()
+                            path.addLines(line.points)
+                            context.stroke(path, with: .color(line.color), lineWidth: line.width)
+
+                            context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
+                        }
+                    }
+                    let renderer = ImageRenderer(content: image)
                     if let image = renderer.uiImage {
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     }
                 }
-                
+
                 Spacer()
-                
+
                 Button("Clear Canvas") {
                     lines = [Line]()
                 }
-                
+
                 Spacer()
             }
         }
