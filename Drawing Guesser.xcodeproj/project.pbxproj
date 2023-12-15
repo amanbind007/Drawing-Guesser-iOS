@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C3A6DB12B2B729B00C4397B /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */; };
+		5C3A6DB42B2CC8C200C4397B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A6DB32B2CC8C200C4397B /* UIImage+Extension.swift */; };
+		5C3A6DB72B2CC93300C4397B /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A6DB62B2CC93300C4397B /* Labels.swift */; };
 		5C3F5C852B283FE0008EB814 /* DrawnImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F5C842B283FE0008EB814 /* DrawnImageClassifier.mlmodel */; };
 		5C4E081D2B160B80003FFF60 /* Drawing_GuesserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */; };
 		5C4E081F2B160B80003FFF60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E081E2B160B80003FFF60 /* HomeView.swift */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		5C3A6DB32B2CC8C200C4397B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		5C3A6DB62B2CC93300C4397B /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		5C3F5C842B283FE0008EB814 /* DrawnImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DrawnImageClassifier.mlmodel; sourceTree = "<group>"; };
 		5C4E08192B160B80003FFF60 /* Drawing Guesser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing Guesser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing_GuesserApp.swift; sourceTree = "<group>"; };
@@ -36,6 +40,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C3A6DB22B2CC8AA00C4397B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C3A6DB32B2CC8C200C4397B /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C3A6DB52B2CC91700C4397B /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				5C3A6DB62B2CC93300C4397B /* Labels.swift */,
+			);
+			path = Globals;
+			sourceTree = "<group>";
+		};
 		5C4E08102B160B80003FFF60 = {
 			isa = PBXGroup;
 			children = (
@@ -55,9 +75,11 @@
 		5C4E081B2B160B80003FFF60 /* Drawing Guesser */ = {
 			isa = PBXGroup;
 			children = (
+				5C3A6DB52B2CC91700C4397B /* Globals */,
 				5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */,
 				5C4E081E2B160B80003FFF60 /* HomeView.swift */,
 				5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */,
+				5C3A6DB22B2CC8AA00C4397B /* Extensions */,
 				5C3F5C842B283FE0008EB814 /* DrawnImageClassifier.mlmodel */,
 				5C4E08202B160B83003FFF60 /* Assets.xcassets */,
 				5C4E08222B160B83003FFF60 /* Preview Content */,
@@ -145,6 +167,8 @@
 			files = (
 				5C3F5C852B283FE0008EB814 /* DrawnImageClassifier.mlmodel in Sources */,
 				5C4E081F2B160B80003FFF60 /* HomeView.swift in Sources */,
+				5C3A6DB72B2CC93300C4397B /* Labels.swift in Sources */,
+				5C3A6DB42B2CC8C200C4397B /* UIImage+Extension.swift in Sources */,
 				5C3A6DB12B2B729B00C4397B /* HomeViewViewModel.swift in Sources */,
 				5C4E081D2B160B80003FFF60 /* Drawing_GuesserApp.swift in Sources */,
 			);
