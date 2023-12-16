@@ -16,6 +16,8 @@ struct Line {
 struct HomeView: View {
     @State private var currentLine = Line()
     @State private var lines = [Line]()
+    
+    @ObservedObject var viewModel = HomeViewViewModel()
 
     var canvas: some View {
         return Canvas { context, _ in
@@ -44,7 +46,7 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            Text("Lorem, Ipsum, Dolor et, Dinam")
+            Text(viewModel.guessedOutput ?? "Hmm....")
 
             if lines.isEmpty {
                 Text("Waiting for Drawing....")
@@ -90,6 +92,22 @@ struct HomeView: View {
                 }
 
                 Spacer()
+            }
+            .onChange(of: lines) {
+                let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
+                    for line in lines {
+                        var path = Path()
+                        path.addLines(line.points)
+                        context.stroke(path, with: .color(line.color), lineWidth: line.width)
+
+                        context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
+                    }
+                }
+                let renderer = ImageRenderer(content: image)
+//                if let image = renderer.uiImage {
+//                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//                }
+                viewModel.predictDrawing(image: renderer.cgImage)
             }
         }
     }
