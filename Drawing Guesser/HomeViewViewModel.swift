@@ -6,29 +6,31 @@
 //
 
 import Foundation
-import CoreGraphics
-
+import UIKit
 
 class HomeViewViewModel: ObservableObject {
     
     var currentChallenge : String = Label().classLabels.randomElement()!
     @Published var guessedOutput : String?
-    let model = DrawnImageClassifier()
+    let model = Drawing_Classifier()
     
     func getNewChallenge(){
         currentChallenge = Label().classLabels.randomElement()!
     }
     
-    func predictDrawing(image: CGImage){
+    func predictDrawing(image: UIImage){
         
-        do {
-            let modelInput = try DrawnImageClassifierInput(imageWith: image)
-            let output = try model.prediction(input: modelInput)
-            
-            guessedOutput = output.category
+        
+        guard let resizedImage = image.resizeTo(size: CGSize(width: 299, height: 299)),
+            let buffer = resizedImage.toBuffer()
+        else {
+            return
         }
-        catch{
-            print(error)
+        
+        let output = try? model.prediction(image: buffer)
+        
+        if let output = output {
+            self.guessedOutput = output.classLabel
         }
     }
     
