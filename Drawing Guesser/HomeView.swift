@@ -13,18 +13,13 @@ struct Line: Equatable {
     var width: Double = 10
 }
 
-
-
 struct HomeView: View {
-    @State private var currentLine = Line()
-    @State private var lines = [Line]()
-    
     @ObservedObject var viewModel = HomeViewViewModel()
 
     var canvas: some View {
         return Canvas { context, _ in
 
-            for line in lines {
+            for line in viewModel.lines {
                 var path = Path()
                 path.addLines(line.points)
                 context.stroke(path, with: .color(line.color), lineWidth: line.width)
@@ -36,25 +31,31 @@ struct HomeView: View {
             .onChanged { value in
                 let newPoint = value.location
 
-                currentLine.points.append(newPoint)
-                self.lines.append(currentLine)
+                viewModel.currentLine.points.append(newPoint)
+                viewModel.lines.append(viewModel.currentLine)
             }
             .onEnded { _ in
-                self.lines.append(currentLine)
-                self.currentLine = Line()
+                viewModel.lines.append(viewModel.currentLine)
+                viewModel.currentLine = Line()
             }
         )
     }
 
     var body: some View {
         VStack {
-            Text(viewModel.guessedOutput ?? "Hmm....")
-
-            if lines.isEmpty {
+            if viewModel.lines.isEmpty {
                 Text("Waiting for Drawing....")
+            } else if viewModel.guessedOutput == viewModel.currentChallenge {
+                Text("It is \(viewModel.currentChallenge)")
             }
             else {
-                Text("🤔 Guessing")
+                if let guess = viewModel.guessedOutput {
+                    Text(guess)
+                }
+                else {
+                    Text("🤔")
+                        .font(.largeTitle)
+                }
             }
 
             VStack {
@@ -73,7 +74,7 @@ struct HomeView: View {
                 Spacer()
                 Button("Save to image: Canvas") {
                     let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
-                        for line in lines {
+                        for line in viewModel.lines {
                             var path = Path()
                             path.addLines(line.points)
                             context.stroke(path, with: .color(line.color), lineWidth: line.width)
@@ -90,16 +91,15 @@ struct HomeView: View {
                 Spacer()
 
                 Button("Clear Canvas") {
-                    lines = [Line]()
+                    viewModel.lines = [Line]()
                 }
 
                 Spacer()
             }
-            
         }
-        .onChange(of: lines) {
+        .onChange(of: viewModel.lines) {
             let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
-                for line in lines {
+                for line in viewModel.lines {
                     var path = Path()
                     path.addLines(line.points)
                     context.stroke(path, with: .color(line.color), lineWidth: line.width)
@@ -108,6 +108,7 @@ struct HomeView: View {
                 }
             }
             let renderer = ImageRenderer(content: image)
+
             viewModel.predictDrawing(image: renderer.uiImage!)
         }
     }

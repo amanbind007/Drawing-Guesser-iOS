@@ -75,6 +75,7 @@
 		5C4E081B2B160B80003FFF60 /* Drawing Guesser */ = {
 			isa = PBXGroup;
 			children = (
+				5CC8DC532B3364560016BE0C /* Drawing Classifier.mlmodel */,
 				5CC8DC522B3364440016BE0C /* Model */,
 				5C3A6DB52B2CC91700C4397B /* Globals */,
 				5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */,
@@ -98,7 +99,6 @@
 		5CC8DC522B3364440016BE0C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5CC8DC532B3364560016BE0C /* Drawing Classifier.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
