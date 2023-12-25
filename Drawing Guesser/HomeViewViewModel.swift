@@ -16,10 +16,10 @@ class HomeViewViewModel: ObservableObject {
     @Published var lines = [Line]()
     @Published var guessedOutput: String?
     
-    let model: Drawing_Classifier = {
+    let model: Drawing_Classifier_1 = {
     do {
         let config = MLModelConfiguration()
-        return try Drawing_Classifier(configuration: config)
+        return try Drawing_Classifier_1(configuration: config)
     } catch {
         print(error)
         fatalError("Couldn't create Drawing Classifier")
@@ -43,10 +43,10 @@ class HomeViewViewModel: ObservableObject {
         
         let output = try? model.prediction(image: buffer)
         
-        print(output as Any)
+        //print(output as Any)
         
-        if let output = output {
-            guessedOutput = output.classLabel
+        if let out = output {
+            guessedOutput = out.target
         }
     }
 }
