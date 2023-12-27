@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct Line: Equatable {
     var points = [CGPoint]()
     var color: Color = .black
-    var width: Double = 10
+    var width: Double = 5
 }
 
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewViewModel()
+    
+    @State var showAlert : Bool = false
+    
+    @State var buttonTitle : String = "Skip"
 
     var canvas: some View {
         return Canvas { context, _ in
@@ -43,10 +48,17 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
+            Text("Current Challenge: \(viewModel.currentChallenge)")
             if viewModel.lines.isEmpty {
                 Text("Waiting for Drawing....")
             } else if viewModel.guessedOutput == viewModel.currentChallenge {
+                
+                
                 Text("It is \(viewModel.currentChallenge)")
+                    .onAppear {
+                        buttonTitle = "Next"
+                    }
+                
             }
             else {
                 if let guess = viewModel.guessedOutput {
@@ -54,7 +66,7 @@ struct HomeView: View {
                 }
                 else {
                     Text("🤔")
-                        .font(.largeTitle)
+                        
                 }
             }
 
@@ -73,6 +85,7 @@ struct HomeView: View {
             HStack {
                 Spacer()
                 Button("Save to image: Canvas") {
+                    showAlert = true
                     let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
                         for line in viewModel.lines {
                             var path = Path()
@@ -96,7 +109,15 @@ struct HomeView: View {
 
                 Spacer()
             }
+            Button(buttonTitle) {
+                buttonTitle = "Skip"
+                viewModel.getNewChallenge()
+                viewModel.lines = [Line]()
+            }
         }
+        .toast(isPresenting: $showAlert, alert: {
+            AlertToast(displayMode: .hud, type: .regular, title: "Image saved in Photos Album")
+        })
         .onChange(of: viewModel.lines) {
             let image = Image(size: CGSize(width: UIScreen.main.bounds.width-5, height: UIScreen.main.bounds.width-5)) { context in
                 for line in viewModel.lines {

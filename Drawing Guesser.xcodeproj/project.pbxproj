@@ -15,6 +15,7 @@
 		5C4E08212B160B83003FFF60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E08202B160B83003FFF60 /* Assets.xcassets */; };
 		5C4E08242B160B83003FFF60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E08232B160B83003FFF60 /* Preview Assets.xcassets */; };
 		5CC380672B39F7300090936E /* Drawing Classifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CC380662B39F7300090936E /* Drawing Classifier 1.mlmodel */; };
+		5CC3806A2B3C9A5D0090936E /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 5CC380692B3C9A5D0090936E /* AlertToast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC3806A2B3C9A5D0090936E /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +121,9 @@
 			dependencies = (
 			);
 			name = "Drawing Guesser";
+			packageProductDependencies = (
+				5CC380692B3C9A5D0090936E /* AlertToast */,
+			);
 			productName = "Drawing Guesser";
 			productReference = 5C4E08192B160B80003FFF60 /* Drawing Guesser.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +152,9 @@
 				Base,
 			);
 			mainGroup = 5C4E08102B160B80003FFF60;
+			packageReferences = (
+				5CC380682B3C9A5D0090936E /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 5C4E081A2B160B80003FFF60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,6 +394,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CC380682B3C9A5D0090936E /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CC380692B3C9A5D0090936E /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CC380682B3C9A5D0090936E /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C4E08112B160B80003FFF60 /* Project object */;
 }
