@@ -16,6 +16,7 @@
 		5C4E08242B160B83003FFF60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E08232B160B83003FFF60 /* Preview Assets.xcassets */; };
 		5CC380672B39F7300090936E /* Drawing Classifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5CC380662B39F7300090936E /* Drawing Classifier 1.mlmodel */; };
 		5CC3806A2B3C9A5D0090936E /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 5CC380692B3C9A5D0090936E /* AlertToast */; };
+		5CC3806C2B4095F60090936E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3806B2B4095F50090936E /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5C4E08202B160B83003FFF60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C4E08232B160B83003FFF60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CC380662B39F7300090936E /* Drawing Classifier 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Drawing Classifier 1.mlmodel"; sourceTree = "<group>"; };
+		5CC3806B2B4095F50090936E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				5C3A6DB52B2CC91700C4397B /* Globals */,
 				5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */,
 				5C4E081E2B160B80003FFF60 /* HomeView.swift */,
+				5CC3806B2B4095F50090936E /* ButtonView.swift */,
 				5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */,
 				5C3A6DB22B2CC8AA00C4397B /* Extensions */,
 				5C4E08202B160B83003FFF60 /* Assets.xcassets */,
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC3806C2B4095F60090936E /* ButtonView.swift in Sources */,
 				5C4E081F2B160B80003FFF60 /* HomeView.swift in Sources */,
 				5C3A6DB72B2CC93300C4397B /* Labels.swift in Sources */,
 				5CC380672B39F7300090936E /* Drawing Classifier 1.mlmodel in Sources */,

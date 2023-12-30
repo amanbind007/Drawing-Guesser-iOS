@@ -14,6 +14,8 @@ struct Line: Equatable {
     var width: Double = 5
 }
 
+
+
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewViewModel()
     
