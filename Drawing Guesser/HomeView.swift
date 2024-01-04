@@ -83,6 +83,8 @@ struct HomeView: View {
                     }
             }
             .padding(5)
+            
+            
 
             HStack {
                 Spacer()
@@ -102,19 +104,42 @@ struct HomeView: View {
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                     }
                 }
+                .foregroundStyle(Color.white)
+                .padding(.horizontal, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .background {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(height: 50)
+                        .foregroundStyle(Color.green)
+                }
 
                 Spacer()
 
                 Button("Clear Canvas") {
                     viewModel.lines = [Line]()
                 }
+                .foregroundStyle(Color.white)
+                .padding(.horizontal, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .background {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(height: 50)
+                        .foregroundStyle(Color.red)
+                }
 
                 Spacer()
             }
+            .padding(.vertical, 10)
             Button(buttonTitle) {
                 buttonTitle = "Skip"
                 viewModel.getNewChallenge()
                 viewModel.lines = [Line]()
+            }
+            .foregroundStyle(Color.white)
+            .padding(.vertical, 20)
+            .padding(.horizontal, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            .background {
+                RoundedRectangle(cornerRadius: 25)
+                    .frame(width: 100, height: 50)
+                    .foregroundStyle(Color.blue)
             }
         }
         .toast(isPresenting: $showAlert, alert: {
