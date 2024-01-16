@@ -64,7 +64,7 @@ struct HomeView: View {
             }
             else {
                 if let guess = viewModel.guessedOutput {
-                    Text(guess)
+                    Text("\(guess) 🤔")
                 }
                 else {
                     Text("🤔")

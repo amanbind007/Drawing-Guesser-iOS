@@ -42,6 +42,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C18F8A52B56F4C6002A30AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C4E081E2B160B80003FFF60 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C18F8A62B56F4D2002A30AC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		5C3A6DB22B2CC8AA00C4397B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +93,12 @@
 		5C4E081B2B160B80003FFF60 /* Drawing Guesser */ = {
 			isa = PBXGroup;
 			children = (
-				5CC8DC522B3364440016BE0C /* Model */,
-				5C3A6DB52B2CC91700C4397B /* Globals */,
 				5C4E081C2B160B80003FFF60 /* Drawing_GuesserApp.swift */,
-				5C4E081E2B160B80003FFF60 /* HomeView.swift */,
-				5C3A6DB02B2B729B00C4397B /* HomeViewViewModel.swift */,
 				5C3A6DB22B2CC8AA00C4397B /* Extensions */,
+				5C3A6DB52B2CC91700C4397B /* Globals */,
+				5C18F8A52B56F4C6002A30AC /* Views */,
+				5C18F8A62B56F4D2002A30AC /* ViewModels */,
+				5CC8DC522B3364440016BE0C /* Model */,
 				5C4E08202B160B83003FFF60 /* Assets.xcassets */,
 				5C4E08222B160B83003FFF60 /* Preview Content */,
 			);
