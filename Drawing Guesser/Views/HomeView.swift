@@ -5,23 +5,22 @@
 //  Created by Aman Bind on 28/11/23.
 //
 
-import SwiftUI
 import AlertToast
+import SwiftUI
 
 struct Line: Equatable {
     var points = [CGPoint]()
     var color: Color = .black
-    var width: Double = 5
+    var width: Double = 7
 }
-
-
 
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewViewModel()
-    
-    @State var showAlert : Bool = false
-    
-    @State var buttonTitle : String = "Skip"
+    @Environment(\.colorScheme) var theme
+
+    @State var showAlert: Bool = false
+
+    @State var buttonTitle: String = "Skip"
 
     var canvas: some View {
         return Canvas { context, _ in
@@ -31,7 +30,7 @@ struct HomeView: View {
                 path.addLines(line.points)
                 context.stroke(path, with: .color(line.color), lineWidth: line.width)
 
-                context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
+                context.stroke(path, with: theme == .dark ? .color(.white) : .color(.black), style: StrokeStyle(lineWidth: line.width, lineCap: .round, lineJoin: .round))
             }
         }
         .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
@@ -51,24 +50,26 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Text("Current Challenge: \(viewModel.currentChallenge)")
+                .font(.largeTitle)
             if viewModel.lines.isEmpty {
                 Text("Waiting for Drawing....")
-            } else if viewModel.guessedOutput == viewModel.currentChallenge {
-                
-                
+                    .font(.title)
+            }
+            else if viewModel.guessedOutput == viewModel.currentChallenge {
                 Text("It is \(viewModel.currentChallenge)")
+                    .font(.title)
                     .onAppear {
                         buttonTitle = "Next"
                     }
-                
             }
             else {
                 if let guess = viewModel.guessedOutput {
                     Text("\(guess) 🤔")
+                        .font(.title)
                 }
                 else {
                     Text("🤔")
-                        
+                        .font(.title)
                 }
             }
 
@@ -83,8 +84,6 @@ struct HomeView: View {
                     }
             }
             .padding(5)
-            
-            
 
             HStack {
                 Spacer()
