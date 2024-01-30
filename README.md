@@ -1,3 +1,5 @@
+![Swift](https://github.com/amanbind007/Drawing-Guesser-iOS/blob/master/Screenshots/drawing_guesser_cover_rounded_small.png?raw=true)
+
 ![Swift](https://img.shields.io/badge/Language-Swift-FF5733)
 ![SwiftUI](https://img.shields.io/badge/Interface-SwfitUI-red)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM-green)
@@ -15,14 +17,23 @@
 
 Drawing guesser is an fully SwiftUI based Drawing guessing game that uses CoreML model to predict what you have drawn. The ML Model is trained using [Google's Quick, Draw! dataset](https://quickdraw.withgoogle.com/data) using CreateML tool.
 
-## 📝 Table of Contents  
-- [Screenhots](#screenshots)
+## 📝 Table of Contents 
+- [Features](#features)
+- [Screenshots](#screenshots)
 - [Requirements](#requirements)
 - [What you can learn?](#whatyoucanlearn)
 - [Dependencies](#dependencies)
 - [Project Structure](#projectstructure)
 - [Contribute](#contribute)
 - [Contact](#contact)
+
+<a name="features"/>
+
+## 📲 Features
+- Fully SwiftUI Based
+- Dark Mode Support
+- MVVM Design Patern
+
 
 <a name="screenshots"/>
 
@@ -44,7 +55,13 @@ Drawing guesser is an fully SwiftUI based Drawing guessing game that uses CoreML
     <td><img src="https://github.com/amanbind007/Drawing-Guesser-iOS/blob/master/Screenshots/Saving%20Image.png?raw=true" width=400 height=533 /></td>
     <td><img src="https://github.com/amanbind007/Drawing-Guesser-iOS/blob/master/Screenshots/Saving%20Image%20to%20Photos.png?raw=true" width=400 height=533 /></td>
   </tr>
-    
+
+  <tr>
+    <th colspan="2">Added Dark Mode Support</th>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="https://github.com/amanbind007/Drawing-Guesser-iOS/blob/master/Screenshots/Dark%20Mode.png?raw=true" width=400 height=533 /></td>
+  </tr>
 </table>
 
 <a name="requirements"/>
